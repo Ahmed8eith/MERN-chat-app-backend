@@ -17,13 +17,29 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 5000;
+ 
+const allowedOrigins = [
+  "https://chat-app52684.netlify.app",
+  "https://67c21ea5d6604c5baa98cc8a--chat-app52684.netlify.app"
+];
+
 
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
+
+
 app.use(
   cors({
-    origin: "https://67c21ea5d6604c5baa98cc8a--chat-app52684.netlify.app", 
+    origin: (origin, callback) => {
+      // Allow requests with no origin
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
