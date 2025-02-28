@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173", // for dev
+    origin: "https://chat-app124325.netlify.app", 
     credentials: true,
   })
 );
