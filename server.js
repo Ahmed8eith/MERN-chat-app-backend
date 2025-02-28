@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chat-app124325.netlify.app", 
+    origin: "https://67c21ea5d6604c5baa98cc8a--chat-app52684.netlify.app", 
     credentials: true,
   })
 );
